@@ -19,9 +19,9 @@ public class SearchSteps {
 		driver.navigate().to("http://automationpractice.com/index.php");
 	}
 	
-	@When("the user enter dresses in the search bar")
-	public void theUserEnterDressesInBarSearch() {
-		driver.findElement(By.id("search_query_top")).sendKeys("dresses");
+	@When("the user enter (.*) in the search bar")
+	public void theUserEnterDressesInBarSearch(String article) {
+		driver.findElement(By.id("search_query_top")).sendKeys(article);
 		
 	}
 	
@@ -30,9 +30,9 @@ public class SearchSteps {
 		driver.findElement(By.name("submit_search")).click();
 	}
 	
-	@Then("the dresses page appears")
-	public void dressesPage() {
-		Assert.assertEquals(driver.findElement(By.className("lighter")).getText(), "\"DRESSES\"");
+	@Then("the (.*) page appears")
+	public void dressesPage(String article) {
+		Assert.assertEquals(driver.findElement(By.className("lighter")).getText(), "\""+ article.toUpperCase() + "\"");
 		System.out.println("OK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		driver.close();
 	}

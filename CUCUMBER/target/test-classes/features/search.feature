@@ -1,9 +1,14 @@
 Feature: Search
 
-Scenario: Search dresses
+Scenario Outline: Search articles
 
 Given the user is in the index page
-When the user enter dresses in the search bar
+When the user enter <article> in the search bar
 And the user clicks the search button
-Then the dresses page appears
+Then the <article> page appears
 
+
+Examples:
+| article |
+| dresses |
+| shoes   |
